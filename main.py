@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import dbcore
+from db.server import dboperator
 from schedule import every, repeat, run_pending
 import time
 
@@ -16,7 +16,7 @@ class Video:
         self.space = space
 
     def insertVideoInfo(self):
-        dbcore.insertVideoInfo(self.title, self.visit, self.barrage, self.up_id, self.url, self.space, self.rank)
+        dboperator.insertVideoInfo(self.title, self.visit, self.barrage, self.up_id, self.url, self.space, self.rank)
 
     def to_csv(self):
         return [self.rank, self.title, self.visit, self.barrage, self.up_id, self.url, self.space]
@@ -25,7 +25,7 @@ class Video:
     def csv_title():
         return ['排名', '标题', '播放量', '弹幕量', 'Up_ID', 'URL', '作者空间']
 
-@repeat(every(60).seconds)
+@repeat(every(10).seconds)
 def getRankVideo():
     # 发起网络请求
     url = 'https://www.bilibili.com/v/popular/rank/all'
