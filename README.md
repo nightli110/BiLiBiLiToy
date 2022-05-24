@@ -10,6 +10,8 @@ python main.py
 
  有了数据接下来的事情就有意思了
 
+欢迎访问我的小站https://www.styxhelix.life/
+
 欢迎一起来搞事情  
 ![公众号](/img/gaoshiqing.jpg)
  
