@@ -1,6 +1,7 @@
 # BiLiBiLiToy
-搞事情搞事情
-1. 爬取bilibili的排行榜视频
+搞事情搞事情  
+1. 运行sql文件导入数据库  
+2. 爬取bilibili的排行榜视频  
 
 ```python
 python main.py

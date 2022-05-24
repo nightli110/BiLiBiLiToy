@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 from bs4 import BeautifulSoup
 from db.server import dboperator
@@ -51,9 +53,12 @@ def getRankVideo():
 
     for v in videos:
         v.insertVideoInfo()
-        print(v.to_csv())
+        print(datetime.datetime.now())
 
 if __name__ == "__main__":
     while True:
-        run_pending()
-        time.sleep(1)
+        try:
+            run_pending()
+            time.sleep(1)
+        except Exception as e:
+            print(e)
