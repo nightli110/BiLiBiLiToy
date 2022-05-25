@@ -5,7 +5,7 @@ class bilibili_videoinfo(BaseModel):
     title = CharField()
     visit = CharField()
     barrage = CharField()
-    up_id = CharField()
+    up_name = CharField()
     url = CharField()
     space = CharField()
 
