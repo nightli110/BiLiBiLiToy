@@ -1,7 +1,7 @@
 from peewee import *
 
 db = MySQLDatabase(
-    "bilibilitest", host="192.168.1.49", port=3306, user="root", passwd="xxxxx"
+    "bilibilitest", host="192.168.1.49", port=3306, user="root", passwd="xxxx"
 )
 db.connect()
 
