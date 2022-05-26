@@ -9,6 +9,11 @@ python main.py
 
  有了数据接下来的事情就有意思了  
 
+代码：  
+process.py  获取上热门基本信息
+imageProcess.py 下载封面  
+
+
 参考：  
 1. 获取视频封面：https://cloud.tencent.com/developer/article/1865839  
 
