@@ -10,7 +10,7 @@ python main.py
  有了数据接下来的事情就有意思了  
 
 代码：  
-process.py  获取上热门基本信息
+process.py  获取上热门基本信息  
 imageProcess.py 下载封面  
 
 
