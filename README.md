@@ -17,8 +17,7 @@ imageProcess.py 下载封面
 参考：  
 1. 获取视频封面：https://cloud.tencent.com/developer/article/1865839  
 
-欢迎访问我的小站https://www.styxhelix.life/
-qq
+欢迎访问我的小站https://www.styxhelix.life/  
 欢迎一起来搞事情  
 ![公众号](/img/gaoshiqing.jpg)
  

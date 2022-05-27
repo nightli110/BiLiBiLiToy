@@ -1,7 +1,9 @@
 from peewee import *
+from conf.configs import config
 
+config = config()
 db = MySQLDatabase(
-    "bilibilitest", host="192.168.1.49", port=3306, user="root", passwd="xxxx"
+    config.db, host=config.host, port=config.port, user=config.user, passwd=config.password
 )
 db.connect()
 
@@ -9,5 +11,3 @@ db.connect()
 class BaseModel(Model):
     class Meta:
         database = db
-
-
