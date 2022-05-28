@@ -9,6 +9,12 @@ python main.py
 
  有了数据接下来的事情就有意思了  
 
+安装小记:  
+pyyaml升级 :
+```python
+pip install --ignore-installed PyYAML
+```
+
 代码：  
 process.py  获取上热门基本信息  
 imageProcess.py 下载封面  
