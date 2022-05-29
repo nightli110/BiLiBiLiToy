@@ -1,7 +1,8 @@
 from db.server import dboperator
 
+
 class Video:
-    def __init__(self, rank, title, visit, barrage, upName, url, space, upId):
+    def __init__(self, rank, title, visit, barrage, upName, url, space, upId, videoId):
         self.rank = rank
         self.title = title
         self.visit = visit
@@ -10,12 +11,16 @@ class Video:
         self.url = url
         self.space = space
         self.upId = upId
+        # BV号
+        self.videoId = videoId
 
     def insertVideoInfo(self):
-        dboperator.insertVideoInfo(self.title, self.visit, self.barrage, self.upName, self.url, self.space, self.upId ,self.rank)
+        dboperator.insertVideoInfo(self.title, self.visit, self.barrage, self.upName, self.url, self.space, self.upId,
+                                   self.rank, self.videoId)
 
-    def to_csv(self):
-        return [self.rank, self.title, self.visit, self.barrage, self.up_id, self.url, self.space]
+    #初始化图片的相关信息
+    def parperVideoImage(self):
+        dboperator.insertVideoImage(self.videoId)
 
     @staticmethod
     def csv_title():

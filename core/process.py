@@ -1,12 +1,18 @@
 import datetime
+import os.path
+
 import requests
 from bs4 import BeautifulSoup
 from schedule import every, repeat
+
+import conf.configs
 from model.Video import Video
-import json
+from db.server.dboperator import *
+from conf.configs import config
+from core.imageProcess import *
 
 #获取排行榜视频的基本信息
-@repeat(every(300).seconds)
+@repeat(every(10).seconds)
 def getRankVideo():
     # 发起网络请求
     url = 'https://www.bilibili.com/v/popular/rank/all'
@@ -29,15 +35,25 @@ def getRankVideo():
         url = itm.find_all('a')[1].get('href').replace(' ', '').replace('\n', '').replace('\r', '')  # 获取视频网址
         space = itm.find_all('a')[2].get('href').replace(' ', '').replace('\n', '').replace('\r', '')  # 获取作者空间网址
         upId = space.split('/')[-1]
-        # imagepath = itm.find('img',{'class':'lazy-image cover'})['src']
-        v = Video(rank, title, visit, barrage, upName, url, space, upId)
+        videoId = url.split('/')[-1]
+        v = Video(rank, title, visit, barrage, upName, url, space, upId, videoId)
         videos.append(v)
 
     for v in videos:
         v.insertVideoInfo()
+        v.parperVideoImage()
         print(datetime.datetime.now())
 
 
-
-# @repeat(every(300).seconds)
-# def getUpInfo():
+# 下载图片
+@repeat(every(100).seconds)
+def getVideoImage():
+    config = conf.configs.config()
+    while(True):
+        res = selectNotLoadImages()
+        for imageRecord in res:
+            bvId = imageRecord.videoId
+            imagePath = os.path.join(config.saveImagePath, bvId+".png")
+            image = getImage(getAid(bvId))
+            download(image, imagePath)
+            updateImageStatus(bvId, imagePath)

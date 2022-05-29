@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50730
  Source Host           : 192.168.1.49:3306
- Source Schema         : bilibilidata
+ Source Schema         : bilibilitest
 
  Target Server Type    : MySQL
  Target Server Version : 50730
  File Encoding         : 65001
 
- Date: 24/05/2022 22:43:52
+ Date: 29/05/2022 21:32:12
 */
 
 SET NAMES utf8mb4;
@@ -30,6 +30,7 @@ CREATE TABLE `bilibili_videolog`  (
   `barrage` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '播放量',
   `rank` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '排名',
   `daydate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '天日期',
+  `upid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'upid',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `uk_title`(`title`) USING BTREE,
   INDEX `uk_daydate`(`daydate`) USING BTREE,

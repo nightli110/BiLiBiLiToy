@@ -1,9 +1,12 @@
 import datetime
 from schedule import run_pending
 import time
+from core.process import *
+
 
 
 if __name__ == "__main__":
+    getVideoImage()
     while True:
         try:
             run_pending()

@@ -12,8 +12,8 @@ class config:
 
     def __init__(self):
         # 如果项目外有配置文件则加载项目外的文件，方便测试
-        if (os.path.exists("../../conf.yaml")):
-            file = open("../../conf.yaml",'r')
+        if (os.path.exists("../conf.yaml")):
+            file = open("../conf.yaml",'r')
         else:
             file =open("conf.yaml", 'r')
         configs = yaml.load(file, Loader=yaml.FullLoader)

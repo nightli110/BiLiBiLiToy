@@ -6,4 +6,4 @@ DataBase:
   port: 3306
   user: root
 Image:
-  path: "../saveimage"
+  path: "saveimage"
