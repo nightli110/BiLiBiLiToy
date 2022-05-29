@@ -51,6 +51,8 @@ def getVideoImage():
     config = conf.configs.config()
     while(True):
         res = selectNotLoadImages()
+        if(res.count()==0):
+            break
         for imageRecord in res:
             bvId = imageRecord.videoId
             imagePath = os.path.join(config.saveImagePath, bvId+".png")
