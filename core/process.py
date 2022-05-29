@@ -12,7 +12,7 @@ from conf.configs import config
 from core.imageProcess import *
 
 #获取排行榜视频的基本信息
-@repeat(every(10).seconds)
+@repeat(every(300).seconds)
 def getRankVideo():
     # 发起网络请求
     url = 'https://www.bilibili.com/v/popular/rank/all'
