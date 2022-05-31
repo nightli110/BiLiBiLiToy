@@ -12,7 +12,7 @@ from conf.configs import config
 from core.imageProcess import *
 
 #获取排行榜视频的基本信息
-@repeat(every(300).seconds)
+@repeat(every(10).seconds)
 def getRankVideo():
     # 发起网络请求
     url = 'https://www.bilibili.com/v/popular/rank/all'
@@ -42,20 +42,26 @@ def getRankVideo():
     for v in videos:
         v.insertVideoInfo()
         v.parperVideoImage()
-        print(datetime.datetime.now())
+    print(datetime.datetime.now()+"get rank finish")
+
 
 
 # 下载图片
-@repeat(every(100).seconds)
+@repeat(every(10).seconds)
 def getVideoImage():
     config = conf.configs.config()
     while(True):
         res = selectNotLoadImages()
         if(res.count()==0):
+            print("download image finish")
             break
         for imageRecord in res:
-            bvId = imageRecord.videoId
-            imagePath = os.path.join(config.saveImagePath, bvId+".png")
-            image = getImage(getAid(bvId))
-            download(image, imagePath)
-            updateImageStatus(bvId, imagePath)
+            try:
+                bvId = imageRecord.videoId
+                imagePath = os.path.join(config.saveImagePath, bvId+".png")
+                image = getImage(getAid(bvId))
+                download(image, imagePath)
+                updateImageStatus(bvId, imagePath)
+            except Exception as e:
+                print(e)
+                print("download image finish")

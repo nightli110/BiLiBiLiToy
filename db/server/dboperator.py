@@ -36,7 +36,9 @@ def insertVideoLog(title, visit, barrage, rank, url):
 ## 初始化图片状态
 def insertVideoImage(videoId):
     status = False
-    bilibili_videoimage.create(videoId=videoId, loadStatus=status)
+    res= bilibili_videoimage.select().where(bilibili_videoimage.videoId == videoId)
+    if(res.count()<1):
+        bilibili_videoimage.create(videoId=videoId, loadStatus=status)
 
 
 def selectVideoImageStatus(videoId):
