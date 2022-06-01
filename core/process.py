@@ -42,7 +42,8 @@ def getRankVideo():
     for v in videos:
         v.insertVideoInfo()
         v.parperVideoImage()
-    print(datetime.datetime.now()+"get rank finish")
+    print(datetime.datetime.now())
+    print("download finish")
 
 
 
