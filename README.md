@@ -26,6 +26,8 @@ pip install --ignore-installed PyYAML
 process.py  获取上热门基本信息  
 imageProcess.py 下载封面  
 
+action:  
+报表
 
 参考：  
 1. 获取视频封面：https://cloud.tencent.com/developer/article/1865839  
