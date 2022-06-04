@@ -52,7 +52,7 @@ def selectVideoImageStatus(videoId):
 # 选择未下载的图片
 def selectNotLoadImages():
     status = False
-    res = bilibili_videoimage.select().limit(10).where(bilibili_videoimage.loadStatus == status)
+    res = bilibili_videoimage.select().limit(50).where(bilibili_videoimage.loadStatus == status)
     return res
 
 

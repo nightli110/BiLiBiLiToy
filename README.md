@@ -1,5 +1,5 @@
 # BiLiBiLiToy
-搞事情搞事情  
+bilibili 排行榜管理工具，包含bilibili 排行榜数据获取，观看人数的log等
 1. 修改conf.yaml 根据本地环境修改db名字，mysql host地址，user，密码  
 运行sql文件导入数据库会生成三张表  
 bilibili_videoinfo：视频信息  

@@ -39,8 +39,8 @@ def getRankVideo():
     for v in videos:
         v.insertVideoInfo()
         v.parperVideoImage()
-    print(datetime.datetime.now())
-    print("download finish")
+    # print(datetime.datetime.now())
+    print("download finish"+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 
 
@@ -48,10 +48,15 @@ def getRankVideo():
 @repeat(every(10).seconds)
 def getVideoImage():
     config = conf.configs.config()
+    retrytimes = 10
+    num = 0
     while(True):
         res = selectNotLoadImages()
         if(res.count()==0):
             print("download image finish")
+            break
+        #超过重试次数也停止下载
+        if (num > retrytimes):
             break
         for imageRecord in res:
             try:
@@ -62,4 +67,5 @@ def getVideoImage():
                 updateImageStatus(bvId, imagePath)
             except Exception as e:
                 print(e)
-                print("download image finish")
+        num = num + 1
+    print("download image finish"+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
