@@ -1,14 +1,11 @@
-import datetime
 import os.path
 
-import requests
 from bs4 import BeautifulSoup
 from schedule import every, repeat
 
 import conf.configs
 from model.Video import Video
 from db.server.dboperator import *
-from conf.configs import config
 from core.imageProcess import *
 
 #获取排行榜视频的基本信息

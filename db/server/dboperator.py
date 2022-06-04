@@ -61,9 +61,17 @@ def updateImageStatus(videoId, path):
     status = True
     bilibili_videoimage.update(loadStatus=status, path=path).where(bilibili_videoimage.videoId == videoId).execute()
 
+# 分页查询 修复之前为下载的封面图片使用
+def fixAllImage():
+    infoNum = bilibili_videoinfo.select().count()
+    pagesize = 10
+    pages = int(infoNum/pagesize)+1
+    for i in range(1, pages):
+        print(i)
+        for videoInfo in bilibili_videoinfo.select().order_by(bilibili_videoinfo.videoId).paginate(i, pagesize):
+            bvNum = videoInfo.url.split('/')[-1]
+            insertVideoImage(bvNum)
 
-# if __name__ == "__main__":
-#     # insertVideoImage("123")
-#     print(selectNotLoadImages())
-#     updateImageStatus("123", "123")
-#     print(selectNotLoadImages())
+
+if __name__ == "__main__":
+    fixAllImage()
